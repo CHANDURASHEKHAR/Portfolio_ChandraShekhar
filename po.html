@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Chandra Shekhar Reddy Malluri - Java Full Stack Developer</title>
+<style>
+
+  
+
+  /* CSS Variables for Themes */
+  :root {
+    --color-bg: #f0f4f8;
+    --color-text: #222;
+    --color-primary: #0077ff;
+    --color-primary-dark: #005fcc;
+    --color-secondary: #004aad;
+    --color-section-bg: #fff;
+    --color-skill-bg: #e8f0fe;
+    --color-skill-hover-bg: #c3dafd;
+    --color-shadow: rgba(0, 119, 255, 0.15);
+    --nav-bg: #fff;
+    --nav-link-color: #0077ff;
+    --nav-link-hover-bg: #0077ff;
+    --nav-link-hover-color: #fff;
+  }
+
+  [data-theme="dark"] {
+    --color-bg: #121212;
+    --color-text: #e0e0e0;
+    --color-primary: #539bf5;
+    --color-primary-dark: #3a7ae0;
+    --color-secondary: #3a7ae0;
+    --color-section-bg: #1e1e1e;
+    --color-skill-bg: #2c3e50;
+    --color-skill-hover-bg: #3a5ba0;
+    --color-shadow: rgba(83, 155, 245, 0.4);
+    --nav-bg: #1e1e1e;
+    --nav-link-color: #539bf5;
+    --nav-link-hover-bg: #539bf5;
+    --nav-link-hover-color: #121212;
+  }
+
+  /* Reset */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    scroll-behavior: smooth;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+
+  a {
+    color: var(--nav-link-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  a:hover {
+    color: var(--color-primary-dark);
+  }
+
+  header {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: white;
+    padding: 50px 20px 100px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 20px var(--color-shadow);
+    border-bottom-left-radius: 60px;
+    border-bottom-right-radius: 60px;
+  }
+  header h1 {
+    font-size: 3.4rem;
+    margin-bottom: 10px;
+    font-weight: 900;
+    letter-spacing: 2px;
+  }
+  header p {
+    font-size: 1.3rem;
+    font-weight: 500;
+    opacity: 0.85;
+  }
+  header img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 6px solid white;
+    margin-top: 40px;
+    object-fit: cover;
+    box-shadow: 0 0 30px rgba(0,0,0,0.25);
+    transition: transform 0.3s ease;
+  }
+  header img:hover {
+    transform: scale(1.05);
+  }
+
+  nav {
+    background: var(--nav-bg);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    border-radius: 0 0 15px 15px;
+  }
+  nav ul {
+    display: flex;
+    justify-content: center;
+    padding: 15px 10px;
+    list-style: none;
+    gap: 40px;
+  }
+  nav ul li a {
+    font-weight: 700;
+    font-size: 1.05rem;
+    padding: 8px 14px;
+    border-radius: 8px;
+    color: var(--nav-link-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  nav ul li a:hover,
+  nav ul li a.active {
+    background: var(--nav-link-hover-bg);
+    color: var(--nav-link-hover-color);
+  }
+
+  main {
+    max-width: 960px;
+    margin: auto;
+    padding: 60px 30px;
+  }
+
+  section {
+    margin-bottom: 70px;
+    background: var(--color-section-bg);
+    border-radius: 20px;
+    padding: 40px 50px;
+    box-shadow: 0 10px 30px rgb(0 0 0 / 0.07);
+    animation: fadeInUp 1s ease forwards;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  h2 {
+    font-size: 2.4rem;
+    margin-bottom: 30px;
+    border-bottom: 4px solid var(--color-primary);
+    padding-bottom: 10px;
+    font-weight: 900;
+    color: var(--color-secondary);
+  }
+
+  .contact-info {
+    font-size: 1rem;
+    margin-top: 15px;
+    color: var(--color-text);
+  }
+  .contact-info a {
+    font-weight: 700;
+  }
+
+  /* Skills */
+  .skills-category {
+    margin-bottom: 40px;
+  }
+  .skills-category h3 {
+    font-size: 1.8rem;
+    margin-bottom: 18px;
+    color: var(--color-primary-dark);
+    font-weight: 800;
+    border-left: 6px solid var(--color-primary);
+    padding-left: 12px;
+  }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
+    gap: 20px;
+  }
+  .skill {
+    background: var(--color-skill-bg);
+    padding: 16px 12px;
+    border-radius: 14px;
+    font-weight: 700;
+    text-align: center;
+    box-shadow: 0 6px 18px var(--color-shadow);
+    cursor: default;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    user-select: none;
+  }
+  .skill:hover {
+    background: var(--color-skill-hover-bg);
+    box-shadow: 0 10px 25px var(--color-primary);
+  }
+
+  /* Experience & Education */
+  ul.exp-list, ul.edu-list {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul.exp-list li, ul.edu-list li {
+    margin-bottom: 25px;
+    border-left: 6px solid var(--color-primary);
+    padding-left: 18px;
+    position: relative;
+  }
+  ul.exp-list li::before, ul.edu-list li::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    background: var(--color-primary);
+    position: absolute;
+    left: -11px;
+    top: 8px;
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--color-primary);
+  }
+  ul.exp-list li p, ul.edu-list li p {
+    font-size: 1rem;
+    color: var(--color-text);
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+
+  /* Projects */
+  .projects {
+    display: grid;
+    gap: 32px;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+  }
+  .project-card {
+    background: var(--color-skill-bg);
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgb(0 0 0 / 0.10);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  
+
+  
+  .project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px var(--color-primary);
+  }
+  .project-image {
+    height: 180px;
+    object-fit: cover;
+    width: 100%;
+    filter: brightness(95%);
+    transition: filter 0.3s ease;
+  }
+  .project-card:hover .project-image {
+    filter: brightness(110%);
+  }
+  .project-content {
+    padding: 22px 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .project-content h4 {
+    margin-bottom: 14px;
+    color: var(--color-secondary);
+    font-weight: 900;
+    font-size: 1.25rem;
+  }
+  .project-content p {
+    flex-grow: 1;
+    font-size: 1rem;
+    color: var(--color-text);
+    margin-bottom: 18px;
+  }
+  .project-content a {
+    font-weight: 700;
+    align-self: flex-start;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    padding: 8px 16px;
+    border-radius: 12px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  .project-content a:hover {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 18px 10px;
+    font-size: 0.9rem;
+    color: var(--color-text);
+    border-top: 1px solid var(--color-skill-hover-bg);
+  }
+
+  /* Dark/Light toggle button */
+  #theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 24px;
+    background: var(--color-section-bg);
+    border: none;
+    padding: 12px 14px;
+    border-radius: 40px;
+    box-shadow: 0 3px 15px var(--color-shadow);
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    font-size: 1.2rem;
+    z-index: 300;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  #theme-toggle:hover {
+    box-shadow: 0 6px 20px var(--color-primary);
+  }
+
+  /* Animations */
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+</head>
+<body>
+<button id="theme-toggle" aria-label="Toggle Dark Mode">🌙</button>
+
+<header>
+  <img src="images//poatfolio-modified.png" alt="Chandra Shekhar Reddy Malluri" />
+  <h1>Chandra Shekhar Reddy Malluri</h1>
+  <p>Java Full Stack Developer | Angular 17, ReactJS, Spring Boot 3.x | Cloud & DevOps Enthusiast</p>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#about" class="active">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+  <section id="about" class="visible">
+    <h2>About Me</h2>
+    <p>Hello! I am Chandra Shekhar, a passionate Java Full Stack Developer with 5+ years of experience building scalable, secure applications in healthcare and e-commerce. I specialize in end-to-end development using Spring Boot, RESTful APIs, React, Angular, and Tailwind CSS, with expertise in cloud-native and microservices architectures leveraging Docker, Kubernetes (AKS), Kafka, Redis, and the ELK Stack. I’ve delivered FHIR/HL7-compliant APIs, optimized data access across SQL/NoSQL databases, and ensured HIPAA and HITECH compliance. Passionate about performance, real-time systems, and emerging tech, I thrive in Agile teams that create impactful, user-focused solutions.
+</p>
+    
+  </section>
+
+  <section id="skills" class="visible">
+    <h2>Technical Skills</h2>
+
+    <div class="skills-category">
+      <h3>Programming Languages</h3>
+      <div class="skills-grid">
+        <div class="skill">Java</div>
+        <div class="skill">TypeScript</div>
+        <div class="skill">SQL</div>
+      </div>
+    </div>
+
+    <div class="skills-category">
+      <h3>Frameworks & Libraries</h3>
+      <div class="skills-grid">
+        <div class="skill">Angular 17</div>
+        <div class="skill">ReactJS & Redux</div>
+        <div class="skill">Tailwind CSS</div>
+        <div class="skill">Chart.js</div>
+        <div class="skill">Spring Boot 3.x</div>
+        <div class="skill">Spring Security</div>
+        <div class="skill">JPA / Hibernate</div>
+      </div>
+    </div>
+
+    <div class="skills-category">
+      <h3>Databases</h3>
+      <div class="skills-grid">
+        <div class="skill">PostgreSQL</div>
+        <div class="skill">MySQL</div>
+        <div class="skill">MongoDB</div>
+      </div>
+    </div>
+
+    <div class="skills-category">
+      <h3>Cloud & DevOps</h3>
+      <div class="skills-grid">
+        <div class="skill">Docker</div>
+        <div class="skill">Azure Kubernetes Service (AKS) & Helm Charts</div>
+        <div class="skill">Terraform</div>
+        <div class="skill">Microsoft Azure</div>
+        <div class="skill">AWS</div>
+      </div>
+    </div>
+
+    <div class="skills-category">
+      <h3>Tools & Technologies</h3>
+      <div class="skills-grid">
+        <div class="skill">Apache Kafka</div>
+        <div class="skill">Redis</div>
+        <div class="skill">ELK Stack</div>
+        <div class="skill">Prometheus & Grafana</div>
+        <div class="skill">OAuth 2.0 & JWT</div>
+        <div class="skill">RESTful APIs</div>
+        <div class="skill">Agile Scrum</div>
+      </div>
+    </div>
+
+    <div class="skills-category">
+      <h3>Healthcare Standards</h3>
+      <div class="skills-grid">
+        <div class="skill">FHIR R4</div>
+        <div class="skill">HL7 v2.x</div>
+        <div class="skill">HIPAA</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="visible">
+    <h2>Experience</h2>
+    <ul class="exp-list">
+      <li>
+        <strong>Java Full Stack Developer</strong> - United Health Group<br />
+        <em>August 2024 - Present</em>
+        <p>Reduced patient data processing latency by 40% with real-time Apache Kafka & Redis caching.</p>
+        <p>Developed secure microservices using Spring Boot and RESTful APIs.</p>
+        <p>Built FHIR R4 and HL7 v2.x-compliant APIs for healthcare data interoperability.</p>
+        <p>Designed dashboards in ReactJS with Tailwind CSS and Chart.js.</p>
+        <p>Containerized apps with Docker & deployed to Azure Kubernetes Service with Helm & Terraform.</p>
+        <p>Collaborated on HIPAA and ICD-10 compliance and agile development.</p>
+      </li>
+      <li>
+        <strong>Full Stack Developer</strong> - Zensar Technologies<br />
+        <em>June 2019 - July 2023</em>
+        <p>Spearheaded Apache Kafka real-time order processing, improving fulfillment speed by 50%.</p>
+        <p>Developed microservices architecture and RESTful APIs for e-commerce.</p>
+        <p>Created responsive Angular interfaces.</p>
+        <p>Integrated AWS for hosting and storage.</p>
+        <p>Implemented OAuth2 and JWT security.</p>
+        <p>Optimized ElasticSearch for product search and improved database performance.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="education" class="visible">
+    <h2>Education</h2>
+    <ul class="edu-list">
+      <li>
+        <strong>Masters in Informatics</strong> - University of Louisiana at Lafayette<br />
+        <em>2023 - 2024</em>
+        <p>Graduated with honors, I gained advanced expertise in software design, data management, and cloud technologies. With hands-on experience in ReactJS and cybersecurity, I build secure, scalable full-stack applications focused on performance and efficiency.
+</p>
+      </li>
+
+
+      <li>
+        <strong>Bachelor of Technology in Eletronics and Computer Engineering</strong> - J.B Institute of Engineering and Technology<br />
+        <em>2017 - 2021</em>
+        <p>Graduated with First Class Honours, the program significantly enhanced my expertise in electronics and computer science, with a strong focus on backend development using technologies such as Java, Python, JDBC, and Hibernate.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="projects" class="visible">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="project-card" tabindex="0">
+        <img class="project-image" src="images/proj1.jpg" alt="Healthcare Management System" />
+        <div class="project-content">
+          <h4>Healthcare Management System</h4>
+          <p>Full stack healthcare app using Angular, Spring Boot, and FHIR standards for patient data management.</p>
+          <!-- <a href="#" target="_blank" rel="noopener">View Details</a> -->
+        </div>
+      </div>
+      <div class="project-card" tabindex="0">
+        <img class="project-image" src="images/proj2.jpeg" alt="Cloud Migration Tool" />
+        <div class="project-content">
+          <h4>Cloud Migration Tool</h4>
+          <p>Automated cloud resource provisioning and deployment with Terraform and Kubernetes (AKS).</p>
+          <!-- <a href="#" target="_blank" rel="noopener">View Details</a> -->
+        </div>
+      </div>
+      <div class="project-card" tabindex="0">
+        <img class="project-image" src="images/proj3.png" alt="Real-time Analytics Dashboard" />
+        <div class="project-content">
+          <h4>Real-time Analytics Dashboard</h4>
+          <p>Implemented with ReactJS, Chart.js, Apache Kafka, and Redis for live data monitoring.</p>
+          <!-- <a href="#" target="_blank" rel="noopener">View Details</a> -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="visible">
+    <h2>Contact Me</h2>
+    <p>Feel free to reach out via email or LinkedIn.</p>
+    <p class="contact-info">
+      Email: <a href="mailto:chandrashekharmalluri@gmail.com">chandrashekharmalluri@gmail.com</a><br />
+      LinkedIn: <a href="https://www.linkedin.com/in/chandra-shekhar-reddy-27576b213/" target="_blank" rel="noopener">linkedin.com/in/chandrashekhar-malluri</a>
+    </p>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 Chandra Shekhar Reddy Malluri. All rights reserved.
+</footer>
+
+<script>
+  // Dark Mode Toggle
+  const toggleBtn = document.getElementById('theme-toggle');
+  const currentTheme = localStorage.getItem('theme') || 'light';
+
+  if(currentTheme === 'dark'){
+    document.documentElement.setAttribute('data-theme', 'dark');
+    toggleBtn.textContent = '☀️';
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    let theme = document.documentElement.getAttribute('data-theme');
+    if(theme === 'dark'){
+      document.documentElement.setAttribute('data-theme', 'light');
+      toggleBtn.textContent = '🌙';
+      localStorage.setItem('theme', 'light');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      toggleBtn.textContent = '☀️';
+      localStorage.setItem('theme', 'dark');
+    }
+  });
+
+  // Smooth section fade-in on scroll
+  const sections = document.querySelectorAll('section');
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1
+    }
+  );
+  sections.forEach(section => observer.observe(section));
+
+  // Highlight nav links based on scroll position
+  const navLinks = document.querySelectorAll('nav ul li a');
+  window.addEventListener('scroll', () => {
+    let fromTop = window.scrollY + 80;
+    navLinks.forEach(link => {
+      const section = document.querySelector(link.hash);
+      if(section && section.offsetTop <= fromTop && (section.offsetTop + section.offsetHeight) > fromTop){
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  });
+</script>
+</body>
+</html>
