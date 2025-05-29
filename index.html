@@ -391,6 +391,72 @@
   }
 }
 
+#contact .contact-info {
+  font-size: 1rem;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+#contact .contact-info a {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+#contact-form {
+  margin-top: 20px;
+}
+
+#contact-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
+
+#contact-form input,
+#contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  border: 1px solid var(--color-primary);
+  border-radius: 10px;
+  font-family: inherit;
+  background: var(--color-section-bg);
+  color: var(--color-text);
+  box-shadow: 0 4px 10px var(--color-shadow);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+  border-color: var(--color-primary-dark);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 119, 255, 0.2);
+}
+
+#contact-form button {
+  background: var(--color-primary);
+  color: white;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 5px 18px var(--color-shadow);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#contact-form button:hover {
+  background-color: var(--color-primary-dark);
+  box-shadow: 0 8px 24px var(--color-shadow);
+}
+
 
 </style>
 </head>
@@ -529,7 +595,7 @@
 
 
       <li>
-        <strong>Bachelor of Technology in Electronics and Computer Engineering</strong> - J.B Institute of Engineering and Technology<br />
+        <strong>Bachelor of Technology in Eletronics and Computer Engineering</strong> - J.B Institute of Engineering and Technology<br />
         <em>2017 - 2021</em>
         <p>Graduated with First Class Honours, the program significantly enhanced my expertise in electronics and computer science, with a strong focus on backend development using technologies such as Java, Python, JDBC, and Hibernate.</p>
       </li>
@@ -566,14 +632,39 @@
     </div>
   </section>
 
-  <section id="contact" class="visible">
-    <h2>Contact Me</h2>
-    <p>Feel free to reach out via email or LinkedIn.</p>
-    <p class="contact-info">
-      Email: <a href="mailto:chandrashekharmalluri@gmail.com">chandrashekharmalluri@gmail.com</a><br />
-      LinkedIn: <a href="https://www.linkedin.com/in/chandra-shekhar-reddy-27576b213/" target="_blank" rel="noopener">linkedin.com/in/chandrashekhar-malluri</a>
-    </p>
-  </section>
+  <section id="contact" class="section visible">
+  <h2>Contact Me</h2>
+  <p>Feel free to reach out via email or LinkedIn.</p>
+
+  <div class="contact-info">
+    📧 <strong>Email:</strong>
+    <a href="mailto:chandrashekharmalluri@gmail.com">chandrashekharmalluri@gmail.com</a><br />
+    🔗 <strong>LinkedIn:</strong>
+    <a href="https://www.linkedin.com/in/chandra-shekhar-reddy-27576b213/" target="_blank" rel="noopener">Linkedin</a>
+  </div>
+
+  <p style="margin-top: 1.5rem;">(or) reach out via the form below:</p>
+
+  <form id="contact-form" action="https://formspree.io/f/mvgaeype" method="POST">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" required placeholder="Your Name" />
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="_replyto" required placeholder="your.email@example.com" />
+
+    <label for="message">Message</label>
+    <textarea id="message" name="message" required rows="5" placeholder="Write your message here..."></textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+
+
+
+
+
+
 </main>
 
 <footer>
